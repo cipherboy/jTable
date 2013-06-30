@@ -1,0 +1,151 @@
+jTable v1.1 - A HTML5/jQuery Table library with Canvas support
+ * Depends: jQuery >= v1.5 ; could be replaced if needed
+ * Depends: jCavnas v2.0 ; canvas support, optional if not using canvases
+
+Copyright (C) 2012, 2013 Alex Scheel
+All rights reserved.
+Licensed under BSD 2 Clause License:
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+- Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright notice, 
+  this list of conditions and the following disclaimer in the documentation 
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+
+An advanced table library with HTML5 Canvas support
+
+Usage:
+  var table = new jTable();
+  table.init('div-jtable-id', '/path/to/form/information', false, false, true);
+  table.setSplits('[,]', '{,}');
+  table.setUControls(['refresh', 'search']);
+  table.setLControls(['refresh', 'search']);
+  table.setTColumns([['ID', 0, 'number'], ['Name', 1, 'text'], ['Score', 2, 'number']]);
+  table.setKeyField(0);
+  table.load();
+  
+API:
+  Main:
+    init(tableid, datauri, editable, deletable, sortable) - initializes
+                                                            jTable
+    load() - Starts jTable, loads data, displays
+
+ Config:
+    setSaveURI(uri) - if editable, location to push changes to
+    
+    setCreateURI(uri) - if able to add new rows, location to push changes to
+    
+    setDeleteURI(uri) - if able to delete rows, location to push changes to
+    
+    setSplits(line-split, row-split) - delimiter to split data by
+    
+    setControIDs(upper, lower) - IDs of control elements for table
+    
+    setUControls(controls) - Sets array of controls in upper controls area
+    
+    setLControls(controls) - Sets array of controls in lower controls area
+    
+    setKeyField(id) - Key position in data array
+    
+    setBindHandler(handler) - Function to be called when binding events
+    
+    setUnbindHandler(handler) - Function to be called when unbinding events
+    
+  Getters:
+    getUControls() - Returns HTML of upper controls
+    
+    getLControls() - Returns HTML of lower controls
+    
+    getTableHead() - Returns HTML of table head
+    
+    getTableContent() - Returns HTML of contents of table
+    
+    getTableFoot() - Returns HTML of table foot
+    
+    getTable() - Gets entire table
+    
+    getColumnFromID() - Get name of column from ID
+    
+    getIDFromColumn() - Get ID of column from name
+    
+  Update Commands:  
+    doSort(cid) - Sorts table based on column id (cid)
+    
+    dataSorted(cid) - Checks if data is sorted by column (cid)
+    
+    doSearchSubmit(element) - Searches based on value of input #element
+    
+    newRow() - Adds a row to table for creation of new row
+    
+    editRows() - Turns checked rows into editable fields
+    
+    editRow(rowid) - Turns row at [rowid] into editable fields
+    
+    saveRow(rowid) - Saves updates to row at [rowid]
+    
+    deleteRow(rowid) - Deletes row at [rowid]
+    
+    refreshTable() - redraw table
+    
+    updateData() - (re)loads data from server
+    
+    showTable() - Shows table
+    
+    hideTable() - Hides table
+    
+    drawTable() - Renders table/contents, places in element
+    
+  Internal Commands:  
+    Quicksort functions:
+      doDataSwap(pos1, pos2)
+      doSortCompare(a, b)
+      doQuickSort(bpos, epos, cid)
+      doQuickSortPartition(bpos, ppos, epos, cid)
+    
+    Search functions:
+      arrayContainsRe(array, regex)
+      stringDistanceBetween(s1, s2)
+      arrayContainsFuzzy(array, term)
+      calculateFuzzyThreshold(string)
+      searchStiffMatch(bits)
+      searchKeyValue(bits)
+      searchLooseMatch(bits)
+    
+    Events:
+      eventCheckAll(event)
+      eventTriggerNew(event)
+      eventTriggerEdit(event)
+      eventTriggerEditRow(event)
+      eventTriggerDeleteRow(event)
+      eventTriggerSaveRow(event)
+      eventTriggerRefresh(event)
+      eventTriggerSort(event)
+      eventTriggerSearch(event)
+      bindEvents()
+      unbindEvents()
+      
+    newRowDrawCanvases()
+    
+    newRowBindEvents()
+    
+    drawCanvases()
+    
+    unhex(text)
+    
+    genRange(lower, upper)
