@@ -1534,7 +1534,16 @@ function jTable() {
     }
     
     this.unhex = function(text) {
-        return pack('H*', text);
+        if (text.length % 2 != 0) {
+            return;
+        } else {
+            var result = "";
+            var stext = text.split('');
+            for (var i = 0; i < text.length; i += 2) {
+                result += String.fromCharCode(parseInt("0x" + stext[i] + '' + stext[i+1]));
+            }
+            return result;
+        }
     }
     
     this.genRange = function(lower, upper) {
