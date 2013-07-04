@@ -988,6 +988,7 @@ function jTable() {
                     default:
                         var type = this.tcolumns[column][2];
                         var pos = this.tcolumns[column][1];
+                        
                         if (type == 'drop-down') {
                             var htmltext = '<select id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value" class="jTableBodySelect">';
                             var elements = this.tcolumns[column][3];
@@ -1008,6 +1009,9 @@ function jTable() {
                             htmltext += '</select>';
                             $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('jTableEditing');
                             $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).html(htmltext);
+                        } else if (type == 'hextext') {
+                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('jTableEditing');
+                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).html('<input id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value" type="' + type + '" placeholder="' + this.unhex(row[pos]) + '" class="jTableBodyInputEditing">');
                         } else {
                             $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('jTableEditing');
                             $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).html('<input id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value" type="' + type + '" placeholder="' + row[pos] + '" class="jTableBodyInputEditing">');
