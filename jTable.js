@@ -1,5 +1,5 @@
 /**
- * jTable v1.1 - A HTML5/jQuery Table library with Canvas support
+ * jTable v1.2 - A HTML5/jQuery Table library with Canvas support
  * Depends: jQuery >= v1.5 ; could be replaced if needed
  * Depends: jCavnas v2.0 ; canvas support, optional if not using canvases
  * 
