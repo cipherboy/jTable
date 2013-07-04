@@ -1,0 +1,76 @@
+.jTableHeadTdCheckbox, .jTableHeadTdCanvas, .jTableHeadTd {
+    border-bottom: 2px solid #4466FA;
+}
+
+.jTableHeadTd {
+    cursor: pointer;
+}
+
+.jTableFootTdCheckbox, .jTableFootTdCanvas, .jTableFootTd {
+    border-top: 2px solid #4466FA;
+}
+
+.jTableFootTd {
+    cursor: pointer;
+}
+
+.jTableBodyCanvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 20px;
+}
+
+.jTableEditing input {
+    width: 200px;
+    height: 20px;
+    
+    border: 1px solid #e0e0e0;
+    margin: 1px;
+    
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.jTableEditing input:focus {
+    border: 1px solid #4466FA !important;
+}
+
+.jTableInputInvalid {
+    border: 1px solid #EE3333 !important;
+}
+
+.jTableUControlsButton, .jTableLControlsButton {
+    height: 30px;
+    
+    border: 1px solid #e0e0e0;
+    margin: 1px;
+    
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    
+    background-color: #4466fa;
+    color: #ffffff;
+    
+    font-weight: bold;
+}
+
+.jTableUControlsInput, .jTableLControlsInput {
+    width: 200px;
+    height: 30px;
+    
+    border: 1px solid #e0e0e0;
+    margin: 1px;
+    
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.jTableUControlsInput:focus, .jTableLControlsInput:focus {
+    border: 1px solid #4466FA;
+}
+
+
+

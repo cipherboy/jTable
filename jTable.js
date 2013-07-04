@@ -236,16 +236,16 @@ function jTable() {
             var item = this.uecontrols[control];
             switch (item) {
                 case 'new':
-                    result += '<button id="' + this.ucelement + '-new" class="tableControlsButton">New</button>';
+                    result += '<button id="' + this.ucelement + '-new" class="jTableUControlsButton">New</button>';
                     break;
                 case 'edit':
-                    result += '<button id="' + this.ucelement + '-edit" class="tableControlsButton">Edit</button>';
+                    result += '<button id="' + this.ucelement + '-edit" class="jTableUControlsButton">Edit</button>';
                     break;
                 case 'refresh':
-                    result += '<button id="' + this.ucelement + '-refresh" class="tableControlsButton">Refresh</button>';
+                    result += '<button id="' + this.ucelement + '-refresh" class="jTableUControlsButton">Refresh</button>';
                     break;
                 case 'search':
-                    result += '<input id="' + this.ucelement + '-search" class="tableControlsInput" type="text" placeholder="Search">';
+                    result += '<input id="' + this.ucelement + '-search" class="jTableUControlsInput" type="text" placeholder="Search">';
                     break;
             }
         }
@@ -258,16 +258,16 @@ function jTable() {
             var item = this.lecontrols[control];
             switch (item) {
                 case 'new':
-                    result += '<button id="' + this.lcelement + '-new" class="tableControlsButton">New</button>';
+                    result += '<button id="' + this.lcelement + '-new" class="jTableLControlsButton">New</button>';
                     break;
                 case 'edit':
-                    result += '<button id="' + this.lcelement + '-edit" class="tableControlsButton">Edit</button>';
+                    result += '<button id="' + this.lcelement + '-edit" class="jTableLControlsButton">Edit</button>';
                     break;
                 case 'refresh':
-                    result += '<button id="' + this.lcelement + '-refresh" class="tableControlsButton">Refresh</button>';
+                    result += '<button id="' + this.lcelement + '-refresh" class="jTableLControlsButton">Refresh</button>';
                     break;
                 case 'search':
-                    result += '<input id="' + this.lcelement + '-search" class="tableControlsInput" type="text" placeholder="Search">';
+                    result += '<input id="' + this.lcelement + '-search" class="jTableLControlsInput" type="text" placeholder="Search">';
                     break;
             }
         }
@@ -280,13 +280,13 @@ function jTable() {
             var name = this.tcolumns[column][0];
             switch (name) {
                 case 'table-checkbox':
-                    result += '<td id="' + this.telement + '-thtr-tdcheckbox"><input id="' + this.telement + '-thtr-checkbox" type="checkbox"></td>';
+                    result += '<td id="' + this.telement + '-thtr-td-checkbox" class="jTableHeadTdCheckbox"><input id="' + this.telement + '-thtr-checkbox" type="checkbox" class="jTableHeadCheckbox"></td>';
                     break;
                 case 'jcanvas':
-                    result += '<td id="' + this.telement + '-thtr-td-' + column + '-canvas">' + this.tcolumns[column][1] + '</td>';
+                    result += '<td id="' + this.telement + '-thtr-td-' + column + '-canvas" class="jTableHeadTdCanvas">' + this.tcolumns[column][1] + '</td>';
                     break;
                 default:
-                    result += '<td id="' + this.telement + '-thtr-td-' + name + '"><span id="' + this.telement + '-thtr-td-' + name + '-sort">' + name + '</span></td>';
+                    result += '<td id="' + this.telement + '-thtr-td-' + name + '" class="jTableHeadTd"><span id="' + this.telement + '-thtr-td-' + name + '-sort" clas="jTableHeadSpan">' + name + '</span></td>';
                     break;
             }
         }
@@ -298,16 +298,16 @@ function jTable() {
         for (var drpos in this.drows) {
             var rowid = this.drows[drpos];
             var row = this.data[rowid];
-            result += '<tr id="' + this.telement + '-tbtr-' + rowid + '">';
+            result += '<tr id="' + this.telement + '-tbtr-' + rowid + '" class="jTableBodyTr">';
             
             for (var column in this.tcolumns) {
                 var name = this.tcolumns[column][0];
                 switch (name) {
                     case 'table-checkbox':
-                        result += '<td id="' + this.telement + '-tbtr-' + rowid + '-tdcheckbox"><input id="' + this.telement + '-tbtr-' + rowid + '-checkbox" type="checkbox"></td>';
+                        result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-checkbox" class="jTableBodyTdCheckbox"><input id="' + this.telement + '-tbtr-' + rowid + '-checkbox" type="checkbox" class="jTableBodyCheckbox"></td>';
                         break;
                     case 'jcanvas':
-                        result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas"><canvas id="' + this.telement + '-tbtr-' + rowid + '-' + column + '-canvas" width="' + this.tcolumns[column][2][0] + '" height="' + this.tcolumns[column][2][1] + '">' + this.tcolumns[column][1] + '</canvas></td>';
+                        result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas" class="jTableBodyTdCanvas"><canvas id="' + this.telement + '-tbtr-' + rowid + '-' + column + '-canvas" width="' + this.tcolumns[column][2][0] + '" height="' + this.tcolumns[column][2][1] + '" class="jTableBodyCanvas">' + this.tcolumns[column][1] + '</canvas></td>';
                         break;
                     default:
                         var pos = this.tcolumns[column][1];
@@ -315,9 +315,9 @@ function jTable() {
                         var regex = /^\d+$/;
                         if (regex.test(pos)) {
                             if (type != 'hextext') {
-                                result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '">' + row[pos].replace('<', '&lt;').replace('>', '&gt;') + '</td>' + "\n";
+                                result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '" class="jTableBodyTd">' + row[pos].replace('<', '&lt;').replace('>', '&gt;') + '</td>' + "\n";
                             } else {
-                                result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '">' + this.unhex(row[pos]).replace('<', '&lt;').replace('>', '&gt;') + '</td>' + "\n";
+                                result += '<td id="' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '" class="jTableBodyTd">' + this.unhex(row[pos]).replace('<', '&lt;').replace('>', '&gt;') + '</td>' + "\n";
                             }
                         }
                         break;
@@ -338,13 +338,13 @@ function jTable() {
             var name = this.tcolumns[column][0];
             switch (name) {
                 case 'table-checkbox':
-                    result += '<td id="' + this.telement + '-tftr-tdcheckbox"><input id="' + this.telement + '-tftr-checkbox" type="checkbox"></td>';
+                    result += '<td id="' + this.telement + '-tftr-td-checkbox" class="jTableFootTdCheckbox"><input id="' + this.telement + '-tftr-checkbox" type="checkbox" class="jTableFootCheckbox"></td>';
                     break;
                 case 'jcanvas':
-                    result += '<td id="' + this.telement + '-tftr-td-' + column + '-canvas">' + this.tcolumns[column][1] + '</td>';
+                    result += '<td id="' + this.telement + '-tftr-td-' + column + '-canvas" class="jTableFootTdCanvas">' + this.tcolumns[column][1] + '</td>';
                     break;
                 default:
-                    result += '<td id="' + this.telement + '-tftr-td' + name + '"><span id="' + this.telement + '-tftr-td' + name + '-sort">' + name + '</span></td>';
+                    result += '<td id="' + this.telement + '-tftr-td' + name + '" class="jTableFootTd"><span id="' + this.telement + '-tftr-td' + name + '-sort" class="jTableFootSpan">' + name + '</span></td>';
                     break;
             }
         }
@@ -352,7 +352,7 @@ function jTable() {
     }
     
     this.getTable = function() {
-        var result = '<table id="' + this.telement + '-table"><thead id="' + this.telement + '-thead"><tr id="' + this.telement + '-thtr">' + this.getTableHead() + '</tr></thead><tbody id="' + this.telement + '-tbody">' + this.getTableContent() + '</tbody><tfoot id="' + this.telement + '-tfoot"><tr id="' + this.telement + '-tftr">' + this.getTableFoot() + '</tr></tfoot>';
+        var result = '<table id="' + this.telement + '-table" class="jTable"><thead id="' + this.telement + '-thead" class="jTableHead"><tr id="' + this.telement + '-thtr" class="jTableHeadTr">' + this.getTableHead() + '</tr></thead><tbody id="' + this.telement + '-tbody" class="jTableBody">' + this.getTableContent() + '</tbody><tfoot id="' + this.telement + '-tfoot" class="jTableFoot"><tr id="' + this.telement + '-tftr" class="jTableFootTr">' + this.getTableFoot() + '</tr></tfoot>';
         return result;
     }
     
@@ -870,29 +870,29 @@ function jTable() {
     this.newRow = function() {
         if (this.editable == true) {
             if ($('#' + this.telement + '-tbtr-new').length == 0) {
-                result += '<tr id="' + this.telement + '-tbtr-new" class="tableEditing">';
+                result += '<tr id="' + this.telement + '-tbtr-new" class="jTableBodyTrNew jTableEditing">';
                 var result;
                 for (var column in this.tcolumns) {
                     var name = this.tcolumns[column][0];
                     switch (name) {
                         case 'table-checkbox':
-                            result += '<td id="' + this.telement + '-tbtr-new-tdcheckbox">&nbsp;</td>';
+                            result += '<td id="' + this.telement + '-tbtr-new-td-checkbox" class="jTableBodyTdCheckboxNew jTableEditing">&nbsp;</td>';
                             break;
                         case 'jcanvas':
-                            result += '<td id="' + this.telement + '-tbtr-new-td-' + column + '-canvas"><canvas id="' + this.telement + '-tbtr-new-' + column + '-canvas" width="' + this.tcolumns[column][2][0] + '" height="' + this.tcolumns[column][2][1] + '">' + this.tcolumns[column][1] + '</canvas></td>';
+                            result += '<td id="' + this.telement + '-tbtr-new-td-' + column + '-canvas" class="jTableBodyTdCanvasNew jTableEditing"><canvas id="' + this.telement + '-tbtr-new-' + column + '-canvas" width="' + this.tcolumns[column][2][0] + '" height="' + this.tcolumns[column][2][1] + '" class="jTableBodyCanvasNew jTableEditing">' + this.tcolumns[column][1] + '</canvas></td>';
                             break;
                         default:
                             var pos = this.tcolumns[column][1];
                             var type = this.tcolumns[column][2];
                             if (type == "drop-down") {
-                                result += '<td id="' + this.telement + '-tbtr-new-td-' + pos + '"><select id="' + this.telement + '-tbtr-new-td-' + pos + '-value"><option disabled="disabled" selected="selected">-----</option>';
+                                result += '<td id="' + this.telement + '-tbtr-new-td-' + pos + '" class="jTableBodyTdNew jTableEditing"><select id="' + this.telement + '-tbtr-new-td-' + pos + '-value" class="jTableBodyTdSpanNew jTableEditing"><option disabled="disabled" selected="selected">-----</option>';
                                 var ditems = this.tcolumns[column][3];
                                 for (var item in ditems) {
                                     result += '<option value="' + ditems[item][1] + '">' + ditems[item][0] + '</option>';
                                 }
                                 result += '</select></td>';
                             } else {
-                                result += '<td id="' + this.telement + '-tbtr-new-td-' + pos + '"><input id="' + this.telement + '-tbtr-new-td-' + pos + '-value" type="' + pos + '-field"></td>';
+                                result += '<td id="' + this.telement + '-tbtr-new-td-' + pos + '" class="jTableBodyTdNew jTableEditing"><input id="' + this.telement + '-tbtr-new-td-' + pos + '-value" type="' + pos + '-field" class="jTableBodyTdInputNew jTableEditing"></td>';
                             }
                             break;
                     }
@@ -955,7 +955,7 @@ function jTable() {
     }
     
     this.editRow = function(rowid) {
-        if ((this.editable == true) && ($('#' + this.telement + '-tbtr-' + rowid + '-td-0').hasClass('tableEditing') == false)) {
+        if ((this.editable == true) && ($('#' + this.telement + '-tbtr-' + rowid + '-td-0').hasClass('jTableBodyEditing') == false)) {
             var row = this.data[rowid];
             for (var column in this.tcolumns) {
                 var name = this.tcolumns[column][0];
@@ -989,7 +989,7 @@ function jTable() {
                         var type = this.tcolumns[column][2];
                         var pos = this.tcolumns[column][1];
                         if (type == 'drop-down') {
-                            var htmltext = '<select id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value">';
+                            var htmltext = '<select id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value" class="jTableBodySelect">';
                             var elements = this.tcolumns[column][3];
                             if (row[pos] == '') {
                                 htmltext += '<option selected="selected" disabled="disabled">-----</option>';
@@ -1006,11 +1006,11 @@ function jTable() {
                                 }
                             }
                             htmltext += '</select>';
-                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('tableEditing');
+                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('jTableEditing');
                             $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).html(htmltext);
                         } else {
-                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('tableEditing');
-                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).html('<input id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value" type="' + type + '" placeholder="' + row[pos] + '">');
+                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).addClass('jTableEditing');
+                            $('#' +  this.telement + '-tbtr-' + rowid + '-td-' + pos).html('<input id="' +  this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value" type="' + type + '" placeholder="' + row[pos] + '" class="jTableBodyInputEditing">');
                         }
                         break;
                 }
@@ -1030,7 +1030,7 @@ function jTable() {
                 default:
                     var pos = this.tcolumns[column][1];
                     var type = this.tcolumns[column][2];
-                    $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value').removeClass('inputInvalid');
+                    $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value').removeClass('jTableInputInvalid');
                     var value = $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos + '-value').val();
                     variables[pos] = [column, value];
                     break;
@@ -1046,14 +1046,14 @@ function jTable() {
             switch (type) {
                 case 'number':
                     if ((variable.search(/[^0-9]/) != -1) && (variable != '')) {
-                        $('#' + this.telement + '-tbtr-' + rowid + '-td-' + position + '-value').addClass('inputInvalid');
+                        $('#' + this.telement + '-tbtr-' + rowid + '-td-' + position + '-value').addClass('jTableInputInvalid');
                         passed = false;
                     }
                     break;
                 case 'email':
                     var emailregex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                     if ((emailregex.test(variable) == false) && (variable != '')) {
-                        $('#' + this.telement + '-tbtr-' + rowid + '-td-' + position + '-value').addClass('inputInvalid');
+                        $('#' + this.telement + '-tbtr-' + rowid + '-td-' + position + '-value').addClass('jTableInputInvalid');
                         passed = false;
                     }
                     break;
@@ -1073,7 +1073,7 @@ function jTable() {
                 
                 if (this.keyfield != position) {
                     if (variable == '') {
-                        $('#' + this.telement + '-tbtr-' + rowid + '-td-' + position + '-value').addClass('inputInvalid');
+                        $('#' + this.telement + '-tbtr-' + rowid + '-td-' + position + '-value').addClass('jTableInputInvalid');
                         passed = false;
                     }
                 }
@@ -1144,28 +1144,28 @@ function jTable() {
                 unbindEvents();
                 bindEvents();
             } else {
-                if ($('#' + this.telement + '-tbtr-' + rowid + '-td-0').hasClass('tableEditing') == true) {
+                if ($('#' + this.telement + '-tbtr-' + rowid + '-td-0').hasClass('jTableEditing') == true) {
                     row = this.data[rowid];
                     
                     for (var column in this.tcolumns) {
                         var name = this.tcolumns[column][0];
                         switch (name) {
                             case 'table-checkbox':
-                                $('#' + this.telement + '-tbtr-' + rowid + '-tdcheckbox').removeClass('inputInvalid');
-                                $('#' + this.telement + '-tbtr-' + rowid + '-tdcheckbox').removeClass('tableEditing');
-                                $('#' + this.telement + '-tbtr-' + rowid + '-tdcheckbox').html('<input id="' + this.telement + '-tbtr-' + rowid + '-checkbox" type="checkbox">');
+                                $('#' + this.telement + '-tbtr-' + rowid + '-td-checkbox').removeClass('jTableInputInvalid');
+                                $('#' + this.telement + '-tbtr-' + rowid + '-td-checkbox').removeClass('jTableEditing');
+                                $('#' + this.telement + '-tbtr-' + rowid + '-td-checkbox').html('<input id="' + this.telement + '-tbtr-' + rowid + '-checkbox" type="checkbox">');
                                 break;
                             case 'jcanvas':
-                                $('#' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas').removeClass('inputInvalid');
-                                $('#' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas').removeClass('tableEditing');
+                                $('#' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas').removeClass('jTableInputInvalid');
+                                $('#' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas').removeClass('jTableEditing');
                                 $('#' + this.telement + '-tbtr-' + rowid + '-td-' + column + '-canvas').html('<canvas id="' + this.telement + '-tbtr-' + rowid + '-' + column + '-canvas" width="' + this.tcolumns[column][2][0] + '" height="' + this.tcolumns[column][2][1] + '">' + this.tcolumns[column][1] + '</canvas>');
                                 break;
                             default:
                                 var pos = this.tcolumns[column][1];
                                 var regex = /^\d+$/;
                                 if (regex.test(pos)) {
-                                    $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos).removeClass('inputInvalid');
-                                    $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos).removeClass('tableEditing');
+                                    $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos).removeClass('jTableInputInvalid');
+                                    $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos).removeClass('jTableEditing');
                                     $('#' + this.telement + '-tbtr-' + rowid + '-td-' + pos).html(row[pos]);
                                 }
                                 break;
