@@ -1,8 +1,9 @@
-jTable v1.1 - A HTML5/jQuery Table library with Canvas support
+jTable v1.3 - A HTML5/jQuery Table library with Canvas support
  * Depends: jQuery >= v1.5 ; could be replaced if needed
  * Depends: jCavnas v2.0 ; canvas support, optional if not using canvases
+ * Depends: jSuggest.js v0.8 ; Suggested text support
 
-Copyright (C) 2012, 2013 Alex Scheel
+Copyright (C) 2012, 2013, 2014 Alex Scheel
 All rights reserved.
 Licensed under BSD 2 Clause License:
 
@@ -60,6 +61,8 @@ API:
     setUControls(controls) - Sets array of controls in upper controls area
     
     setLControls(controls) - Sets array of controls in lower controls area
+    
+    setTColumns(columns) - Sets array of columns
     
     setKeyField(id) - Key position in data array
     
